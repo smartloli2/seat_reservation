@@ -1,0 +1,3 @@
+class Resources {
+  Resources._();
+}
