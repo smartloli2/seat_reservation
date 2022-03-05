@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:seat_reservation/app/features/main/screen/logic/main_nav_cubit.dart';
 import 'package:seat_reservation/core/custom_cubit_observer.dart';
 
 GetIt getIt = GetIt.instance;
@@ -13,7 +14,7 @@ Future<void> init() async {
 
   _registerUseCases();
 
-  _registerBlocs();
+  _registerCubits();
 }
 
 void _registerStorages() {}
@@ -22,4 +23,6 @@ void _registerRepositories() {}
 
 void _registerUseCases() {}
 
-void _registerBlocs() {}
+void _registerCubits() {
+  getIt.registerFactory(() => MainNavCubit());
+}
