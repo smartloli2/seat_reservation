@@ -55,3 +55,10 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+
+  fonts:
+    - family: GTWalsheimPro
+      fonts:
+        - asset: assets/fonts/gt_walsheim_pro_regular.ttf
+        - asset: assets/fonts/gt_walsheim_pro_bold.ttf
+          weight: 700

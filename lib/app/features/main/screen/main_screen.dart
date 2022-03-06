@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:seat_reservation/app/features/history_page/history_page.dart';
+import 'package:seat_reservation/app/features/home_page/home_page.dart';
 import 'package:seat_reservation/app/features/main/screen/logic/main_nav_cubit.dart';
 import 'package:seat_reservation/app/features/main/widgets/bottom_navigation_widget.dart';
-import 'package:seat_reservation/app/features/reservation_page/reservation_page.dart';
 import 'package:seat_reservation/core/base_state.dart';
 
 class MainScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _MainScreenState
           physics: const NeverScrollableScrollPhysics(),
           controller: cubit.pageController,
           children: const [
-            ReservationPage(),
+            HomePage(),
             HistoryPage(),
           ],
         ),
