@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:seat_reservation/app/features/home_page/logic/home_cubit.dart';
+import 'package:seat_reservation/app/features/home_page/screen/logic/home_cubit.dart';
+import 'package:seat_reservation/app/features/home_page/widgets/office_details/office_details_widget.dart';
 import 'package:seat_reservation/core/base_state.dart';
 import 'package:seat_reservation/core/constants/custom_colors.dart';
 import 'package:seat_reservation/core/constants/text_styles.dart';
@@ -23,29 +25,42 @@ class _HomePageState extends BaseState<HomePage, HomeCubit, HomeState> {
           textAlign: TextAlign.center,
           style: TextStyles.appBarTitle,
         ),
+        centerTitle: true,
+        leading: cubit.showArrowBack
+            ? IconButton(
+                onPressed: cubit.loadList,
+                icon: const Icon(CupertinoIcons.back),
+              )
+            : null,
       ),
       body: state.maybeMap(
         orElse: () => const LoadingWidget(),
-        loaded: (loadedState) => Padding(
+        listLoaded: (state) => Padding(
           padding: const EdgeInsets.fromLTRB(15, 30, 15, 15),
           child: ListView.builder(
-            itemCount: loadedState.offices.length,
+            itemCount: state.offices.length,
             itemBuilder: (context, index) {
-              final office = loadedState.offices[index];
-              print(office);
+              final office = state.offices[index];
               return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
                 elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Text(
-                    "${office.name} #${office.number}",
-                    style: TextStyles.officeCardTitle,
+                child: InkWell(
+                  onTap: () => cubit.toDetails(office),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      "${office.name} #${office.number}",
+                      style: TextStyles.officeCardTitle,
+                    ),
                   ),
                 ),
               );
             },
           ),
         ),
+        detailsLoaded: (state) => OfficeDetailsWidget(state.office),
       ),
     );
   }

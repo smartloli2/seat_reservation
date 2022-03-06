@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'home_cubit.dart';
+part of 'office_details_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,41 +14,54 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$HomeStateTearOff {
-  const _$HomeStateTearOff();
+class _$OfficeDetailsStateTearOff {
+  const _$OfficeDetailsStateTearOff();
 
   _Loading loading() {
     return const _Loading();
   }
 
-  _Loaded loaded({required List<Office> offices}) {
+  _Loaded loaded(
+      {required double officeWidth,
+      required double officeHeight,
+      required OfficeSize officeSize,
+      required List<Workplace?> workplaces}) {
     return _Loaded(
-      offices: offices,
+      officeWidth: officeWidth,
+      officeHeight: officeHeight,
+      officeSize: officeSize,
+      workplaces: workplaces,
     );
   }
 }
 
 /// @nodoc
-const $HomeState = _$HomeStateTearOff();
+const $OfficeDetailsState = _$OfficeDetailsStateTearOff();
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$OfficeDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Office> offices) loaded,
+    required TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,18 +87,20 @@ mixin _$HomeState {
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res>;
+abstract class $OfficeDetailsStateCopyWith<$Res> {
+  factory $OfficeDetailsStateCopyWith(
+          OfficeDetailsState value, $Res Function(OfficeDetailsState) then) =
+      _$OfficeDetailsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$OfficeDetailsStateCopyWithImpl<$Res>
+    implements $OfficeDetailsStateCopyWith<$Res> {
+  _$OfficeDetailsStateCopyWithImpl(this._value, this._then);
 
-  final HomeState _value;
+  final OfficeDetailsState _value;
   // ignore: unused_field
-  final $Res Function(HomeState) _then;
+  final $Res Function(OfficeDetailsState) _then;
 }
 
 /// @nodoc
@@ -95,7 +110,8 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res>
+    extends _$OfficeDetailsStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -112,7 +128,7 @@ class _$_Loading with StateForBuilder implements _Loading {
 
   @override
   String toString() {
-    return 'HomeState.loading()';
+    return 'OfficeDetailsState.loading()';
   }
 
   @override
@@ -128,7 +144,9 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Office> offices) loaded,
+    required TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)
+        loaded,
   }) {
     return loading();
   }
@@ -137,7 +155,9 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
   }) {
     return loading?.call();
   }
@@ -146,7 +166,9 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -187,7 +209,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   }
 }
 
-abstract class _Loading implements HomeState, StateForBuilder {
+abstract class _Loading implements OfficeDetailsState, StateForBuilder {
   const factory _Loading() = _$_Loading;
 }
 
@@ -195,11 +217,15 @@ abstract class _Loading implements HomeState, StateForBuilder {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({List<Office> offices});
+  $Res call(
+      {double officeWidth,
+      double officeHeight,
+      OfficeSize officeSize,
+      List<Workplace?> workplaces});
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+class __$LoadedCopyWithImpl<$Res> extends _$OfficeDetailsStateCopyWithImpl<$Res>
     implements _$LoadedCopyWith<$Res> {
   __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
       : super(_value, (v) => _then(v as _Loaded));
@@ -209,13 +235,28 @@ class __$LoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? offices = freezed,
+    Object? officeWidth = freezed,
+    Object? officeHeight = freezed,
+    Object? officeSize = freezed,
+    Object? workplaces = freezed,
   }) {
     return _then(_Loaded(
-      offices: offices == freezed
-          ? _value.offices
-          : offices // ignore: cast_nullable_to_non_nullable
-              as List<Office>,
+      officeWidth: officeWidth == freezed
+          ? _value.officeWidth
+          : officeWidth // ignore: cast_nullable_to_non_nullable
+              as double,
+      officeHeight: officeHeight == freezed
+          ? _value.officeHeight
+          : officeHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      officeSize: officeSize == freezed
+          ? _value.officeSize
+          : officeSize // ignore: cast_nullable_to_non_nullable
+              as OfficeSize,
+      workplaces: workplaces == freezed
+          ? _value.workplaces
+          : workplaces // ignore: cast_nullable_to_non_nullable
+              as List<Workplace?>,
     ));
   }
 }
@@ -224,14 +265,24 @@ class __$LoadedCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
 @With<StateForBuilder>()
 class _$_Loaded with StateForBuilder implements _Loaded {
-  const _$_Loaded({required this.offices});
+  const _$_Loaded(
+      {required this.officeWidth,
+      required this.officeHeight,
+      required this.officeSize,
+      required this.workplaces});
 
   @override
-  final List<Office> offices;
+  final double officeWidth;
+  @override
+  final double officeHeight;
+  @override
+  final OfficeSize officeSize;
+  @override
+  final List<Workplace?> workplaces;
 
   @override
   String toString() {
-    return 'HomeState.loaded(offices: $offices)';
+    return 'OfficeDetailsState.loaded(officeWidth: $officeWidth, officeHeight: $officeHeight, officeSize: $officeSize, workplaces: $workplaces)';
   }
 
   @override
@@ -239,12 +290,23 @@ class _$_Loaded with StateForBuilder implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
-            const DeepCollectionEquality().equals(other.offices, offices));
+            const DeepCollectionEquality()
+                .equals(other.officeWidth, officeWidth) &&
+            const DeepCollectionEquality()
+                .equals(other.officeHeight, officeHeight) &&
+            const DeepCollectionEquality()
+                .equals(other.officeSize, officeSize) &&
+            const DeepCollectionEquality()
+                .equals(other.workplaces, workplaces));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(offices));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(officeWidth),
+      const DeepCollectionEquality().hash(officeHeight),
+      const DeepCollectionEquality().hash(officeSize),
+      const DeepCollectionEquality().hash(workplaces));
 
   @JsonKey(ignore: true)
   @override
@@ -255,29 +317,35 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Office> offices) loaded,
+    required TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)
+        loaded,
   }) {
-    return loaded(offices);
+    return loaded(officeWidth, officeHeight, officeSize, workplaces);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
   }) {
-    return loaded?.call(offices);
+    return loaded?.call(officeWidth, officeHeight, officeSize, workplaces);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Office> offices)? loaded,
+    TResult Function(double officeWidth, double officeHeight,
+            OfficeSize officeSize, List<Workplace?> workplaces)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(offices);
+      return loaded(officeWidth, officeHeight, officeSize, workplaces);
     }
     return orElse();
   }
@@ -314,10 +382,17 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   }
 }
 
-abstract class _Loaded implements HomeState, StateForBuilder {
-  const factory _Loaded({required List<Office> offices}) = _$_Loaded;
+abstract class _Loaded implements OfficeDetailsState, StateForBuilder {
+  const factory _Loaded(
+      {required double officeWidth,
+      required double officeHeight,
+      required OfficeSize officeSize,
+      required List<Workplace?> workplaces}) = _$_Loaded;
 
-  List<Office> get offices;
+  double get officeWidth;
+  double get officeHeight;
+  OfficeSize get officeSize;
+  List<Workplace?> get workplaces;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

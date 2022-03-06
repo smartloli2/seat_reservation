@@ -26,14 +26,14 @@ class AppRouter {
     );
   }
 
-  static T _tryCastArgs<T>(Object? arguments) {
-    if (arguments is T) {
-      return arguments;
-    } else {
-      log.error('Invalid type of navigation arguments: $T');
-      throw InvalidNavArgumentsException(
-        'Invalid type of navigation arguments: $T',
-      );
-    }
-  }
+  // static T _tryCastArgs<T>(Object? arguments) {
+  //   if (arguments is T) {
+  //     return arguments;
+  //   } else {
+  //     log.error('Invalid type of navigation arguments: $T');
+  //     throw InvalidNavArgumentsException(
+  //       'Invalid type of navigation arguments: $T',
+  //     );
+  //   }
+  // }
 }

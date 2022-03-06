@@ -6,7 +6,12 @@ class HomeState with _$HomeState {
   const factory HomeState.loading() = _Loading;
 
   @With<StateForBuilder>()
-  const factory HomeState.loaded({
+  const factory HomeState.listLoaded({
     required List<Office> offices,
-  }) = _Loaded;
+  }) = _ListLoaded;
+
+  @With<StateForBuilder>()
+  const factory HomeState.detailsLoaded({
+    required Office office,
+  }) = _DetailsLoaded;
 }
