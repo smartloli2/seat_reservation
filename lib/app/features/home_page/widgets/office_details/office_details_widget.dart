@@ -10,6 +10,7 @@ import 'package:seat_reservation/core/constants/resources.dart';
 import 'package:seat_reservation/core/log/i_log.dart';
 import 'package:seat_reservation/core/widgets/diagonal_scroll_view/diagonal_scroll_view.dart';
 import 'package:seat_reservation/core/widgets/loading_widget.dart';
+import 'package:seat_reservation/domain/models/booking_status.dart';
 import 'package:seat_reservation/domain/models/office.dart';
 import 'package:sizer/sizer.dart';
 
@@ -46,12 +47,17 @@ class _OfficeDetailsWidgetState extends BaseState<OfficeDetailsWidget,
                 location:
                     Offset(state.officeWidth / 2, state.officeHeight / 2));
           },
-          child: Container(
+          child: SizedBox(
             width: max(state.officeWidth, 100.w),
             height: max(state.officeHeight, 75.h),
             child: Stack(
               alignment: Alignment.center,
               children: [
+                SvgPicture.asset(
+                  Resources.walls,
+                  width: state.officeWidth,
+                  height: state.officeHeight,
+                ),
                 SizedBox(
                   width: state.officeWidth,
                   height: state.officeHeight,
@@ -64,14 +70,13 @@ class _OfficeDetailsWidgetState extends BaseState<OfficeDetailsWidget,
                     childAspectRatio: seatWidth / seatHeight,
                     children: List.generate(
                       state.workplaces.length,
-                      (index) => WorkplaceWidget(state.workplaces[index]),
+                      (index) => WorkplaceWidget(
+                        workplace: state.workplaces[index],
+                        selected: state.selectedPlaceIndex == index,
+                        onTap: () => cubit.selectWorkplace(index),
+                      ),
                     ),
                   ),
-                ),
-                SvgPicture.asset(
-                  Resources.walls,
-                  width: state.officeWidth,
-                  height: state.officeHeight,
                 ),
               ],
             ),

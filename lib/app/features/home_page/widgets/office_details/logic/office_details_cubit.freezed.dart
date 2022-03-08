@@ -25,12 +25,14 @@ class _$OfficeDetailsStateTearOff {
       {required double officeWidth,
       required double officeHeight,
       required OfficeSize officeSize,
-      required List<Workplace?> workplaces}) {
+      required List<Workplace?> workplaces,
+      required int? selectedPlaceIndex}) {
     return _Loaded(
       officeWidth: officeWidth,
       officeHeight: officeHeight,
       officeSize: officeSize,
       workplaces: workplaces,
+      selectedPlaceIndex: selectedPlaceIndex,
     );
   }
 }
@@ -43,24 +45,36 @@ mixin _$OfficeDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)
+    required TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -144,8 +158,12 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)
+    required TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)
         loaded,
   }) {
     return loading();
@@ -155,8 +173,12 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
   }) {
     return loading?.call();
@@ -166,8 +188,12 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
     required TResult orElse(),
   }) {
@@ -221,7 +247,8 @@ abstract class _$LoadedCopyWith<$Res> {
       {double officeWidth,
       double officeHeight,
       OfficeSize officeSize,
-      List<Workplace?> workplaces});
+      List<Workplace?> workplaces,
+      int? selectedPlaceIndex});
 }
 
 /// @nodoc
@@ -239,6 +266,7 @@ class __$LoadedCopyWithImpl<$Res> extends _$OfficeDetailsStateCopyWithImpl<$Res>
     Object? officeHeight = freezed,
     Object? officeSize = freezed,
     Object? workplaces = freezed,
+    Object? selectedPlaceIndex = freezed,
   }) {
     return _then(_Loaded(
       officeWidth: officeWidth == freezed
@@ -257,6 +285,10 @@ class __$LoadedCopyWithImpl<$Res> extends _$OfficeDetailsStateCopyWithImpl<$Res>
           ? _value.workplaces
           : workplaces // ignore: cast_nullable_to_non_nullable
               as List<Workplace?>,
+      selectedPlaceIndex: selectedPlaceIndex == freezed
+          ? _value.selectedPlaceIndex
+          : selectedPlaceIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -269,7 +301,8 @@ class _$_Loaded with StateForBuilder implements _Loaded {
       {required this.officeWidth,
       required this.officeHeight,
       required this.officeSize,
-      required this.workplaces});
+      required this.workplaces,
+      required this.selectedPlaceIndex});
 
   @override
   final double officeWidth;
@@ -279,10 +312,12 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   final OfficeSize officeSize;
   @override
   final List<Workplace?> workplaces;
+  @override
+  final int? selectedPlaceIndex;
 
   @override
   String toString() {
-    return 'OfficeDetailsState.loaded(officeWidth: $officeWidth, officeHeight: $officeHeight, officeSize: $officeSize, workplaces: $workplaces)';
+    return 'OfficeDetailsState.loaded(officeWidth: $officeWidth, officeHeight: $officeHeight, officeSize: $officeSize, workplaces: $workplaces, selectedPlaceIndex: $selectedPlaceIndex)';
   }
 
   @override
@@ -297,7 +332,9 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other.officeSize, officeSize) &&
             const DeepCollectionEquality()
-                .equals(other.workplaces, workplaces));
+                .equals(other.workplaces, workplaces) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedPlaceIndex, selectedPlaceIndex));
   }
 
   @override
@@ -306,7 +343,8 @@ class _$_Loaded with StateForBuilder implements _Loaded {
       const DeepCollectionEquality().hash(officeWidth),
       const DeepCollectionEquality().hash(officeHeight),
       const DeepCollectionEquality().hash(officeSize),
-      const DeepCollectionEquality().hash(workplaces));
+      const DeepCollectionEquality().hash(workplaces),
+      const DeepCollectionEquality().hash(selectedPlaceIndex));
 
   @JsonKey(ignore: true)
   @override
@@ -317,35 +355,50 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)
+    required TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)
         loaded,
   }) {
-    return loaded(officeWidth, officeHeight, officeSize, workplaces);
+    return loaded(
+        officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
   }) {
-    return loaded?.call(officeWidth, officeHeight, officeSize, workplaces);
+    return loaded?.call(
+        officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(double officeWidth, double officeHeight,
-            OfficeSize officeSize, List<Workplace?> workplaces)?
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(officeWidth, officeHeight, officeSize, workplaces);
+      return loaded(officeWidth, officeHeight, officeSize, workplaces,
+          selectedPlaceIndex);
     }
     return orElse();
   }
@@ -387,12 +440,14 @@ abstract class _Loaded implements OfficeDetailsState, StateForBuilder {
       {required double officeWidth,
       required double officeHeight,
       required OfficeSize officeSize,
-      required List<Workplace?> workplaces}) = _$_Loaded;
+      required List<Workplace?> workplaces,
+      required int? selectedPlaceIndex}) = _$_Loaded;
 
   double get officeWidth;
   double get officeHeight;
   OfficeSize get officeSize;
   List<Workplace?> get workplaces;
+  int? get selectedPlaceIndex;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

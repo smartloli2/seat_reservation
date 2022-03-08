@@ -11,5 +11,6 @@ class OfficeDetailsState with _$OfficeDetailsState {
     required double officeHeight,
     required OfficeSize officeSize,
     required List<Workplace?> workplaces,
+    required int? selectedPlaceIndex,
   }) = _Loaded;
 }

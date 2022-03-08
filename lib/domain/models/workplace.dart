@@ -15,4 +15,16 @@ class Workplace {
   @override
   String toString() =>
       'Workplace(id: $id, bookingStatus: $bookingStatus, coordinates: $coordinates)';
+
+  Workplace copyWith({
+    String? id,
+    BookingStatus? bookingStatus,
+    Coordinates? coordinates,
+  }) {
+    return Workplace(
+      id: id ?? this.id,
+      bookingStatus: bookingStatus ?? this.bookingStatus,
+      coordinates: coordinates ?? this.coordinates,
+    );
+  }
 }

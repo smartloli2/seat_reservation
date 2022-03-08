@@ -18,4 +18,18 @@ class Office {
   String toString() {
     return 'Office(number: $number, name: $name, wordplaces: $workplaces, size: $size)';
   }
+
+  Office copyWith({
+    int? number,
+    String? name,
+    List<Workplace>? workplaces,
+    OfficeSize? size,
+  }) {
+    return Office(
+      number: number ?? this.number,
+      name: name ?? this.name,
+      workplaces: workplaces ?? this.workplaces,
+      size: size ?? this.size,
+    );
+  }
 }
