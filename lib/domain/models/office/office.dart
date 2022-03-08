@@ -1,14 +1,14 @@
-import 'package:seat_reservation/domain/models/size.dart';
-import 'package:seat_reservation/domain/models/workplace.dart';
+import 'package:seat_reservation/domain/models/office/entities/size.dart';
+import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
 
 class Office {
-  final int number;
+  final int id;
   final String name;
   final List<Workplace> workplaces;
   final OfficeSize size;
 
   const Office({
-    required this.number,
+    required this.id,
     required this.name,
     required this.workplaces,
     required this.size,
@@ -16,7 +16,7 @@ class Office {
 
   @override
   String toString() {
-    return 'Office(number: $number, name: $name, wordplaces: $workplaces, size: $size)';
+    return 'Office(number: $id, name: $name, wordplaces: $workplaces, size: $size)';
   }
 
   Office copyWith({
@@ -26,7 +26,7 @@ class Office {
     OfficeSize? size,
   }) {
     return Office(
-      number: number ?? this.number,
+      id: number ?? this.id,
       name: name ?? this.name,
       workplaces: workplaces ?? this.workplaces,
       size: size ?? this.size,

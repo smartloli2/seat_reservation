@@ -16,7 +16,7 @@ import 'package:seat_reservation/core/widgets/diagonal_scroll_view/diagonal_scro
 import 'package:seat_reservation/core/widgets/loading_widget.dart';
 import 'package:seat_reservation/core/widgets/null_widget.dart';
 import 'package:seat_reservation/core/widgets/workplace_widget.dart';
-import 'package:seat_reservation/domain/models/office.dart';
+import 'package:seat_reservation/domain/models/office/office.dart';
 import 'package:sizer/sizer.dart';
 
 class OfficeDetailsWidget extends StatefulWidget {

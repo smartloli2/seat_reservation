@@ -1,5 +1,5 @@
-import 'package:seat_reservation/domain/models/booking_status.dart';
-import 'package:seat_reservation/domain/models/coordinates.dart';
+import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
+import 'package:seat_reservation/domain/models/office/entities/coordinates.dart';
 
 class Workplace {
   final String id;

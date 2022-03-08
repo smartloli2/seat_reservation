@@ -51,7 +51,7 @@ class _HomePageState extends BaseState<HomePage, HomeCubit, HomeState> {
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
-                      "${office.name} #${office.number}",
+                      "${office.name} #${office.id}",
                       style: TextStyles.officeCardTitle,
                     ),
                   ),

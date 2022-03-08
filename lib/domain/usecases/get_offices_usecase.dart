@@ -1,13 +1,13 @@
-import 'package:seat_reservation/domain/models/booking_status.dart';
-import 'package:seat_reservation/domain/models/coordinates.dart';
-import 'package:seat_reservation/domain/models/office.dart';
-import 'package:seat_reservation/domain/models/size.dart';
-import 'package:seat_reservation/domain/models/workplace.dart';
+import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
+import 'package:seat_reservation/domain/models/office/entities/coordinates.dart';
+import 'package:seat_reservation/domain/models/office/entities/size.dart';
+import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
+import 'package:seat_reservation/domain/models/office/office.dart';
 
 class GetOfficesUsecase {
   List<Office> call() => [
         const Office(
-          number: 303,
+          id: 303,
           name: "Кузнецкий Мост",
           workplaces: [
             Workplace(

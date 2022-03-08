@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:seat_reservation/core/state_mixins.dart';
-import 'package:seat_reservation/domain/models/office.dart';
+import 'package:seat_reservation/domain/models/office/office.dart';
 import 'package:seat_reservation/domain/usecases/get_offices_usecase.dart';
 
 part 'home_state.dart';
@@ -19,8 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
   String get pageTitle => state.map(
         loading: (_) => "Загрузка...",
         listLoaded: (_) => "Бронирование места в офисе",
-        detailsLoaded: (state) =>
-            "#${state.office.number} ${state.office.name}",
+        detailsLoaded: (state) => "#${state.office.id} ${state.office.name}",
       );
 
   bool get showArrowBack => state.maybeMap(

@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:seat_reservation/core/state_mixins.dart';
-import 'package:seat_reservation/domain/models/booking_status.dart';
-import 'package:seat_reservation/domain/models/office.dart';
-import 'package:seat_reservation/domain/models/size.dart';
-import 'package:seat_reservation/domain/models/workplace.dart';
+import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
+import 'package:seat_reservation/domain/models/office/entities/size.dart';
+import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
+import 'package:seat_reservation/domain/models/office/office.dart';
 
-part 'office_details_state.dart';
 part 'office_details_cubit.freezed.dart';
+part 'office_details_state.dart';
 
 const seatWidth = 65.0;
 const seatHeight = 106.0;

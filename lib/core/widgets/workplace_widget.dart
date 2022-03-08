@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:seat_reservation/app/features/home_page/widgets/office_details/logic/office_details_cubit.dart';
 import 'package:seat_reservation/core/constants/custom_colors.dart';
 import 'package:seat_reservation/core/widgets/null_widget.dart';
-import 'package:seat_reservation/domain/models/booking_status.dart';
-import 'package:seat_reservation/domain/models/workplace.dart';
+import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
+import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
 
 class WorkplaceWidget extends StatelessWidget {
   final Workplace? workplace;
