@@ -13,4 +13,7 @@ class OfficeDetailsState with _$OfficeDetailsState {
     required List<Workplace?> workplaces,
     required int? selectedPlaceIndex,
   }) = _Loaded;
+
+  @With<StateForListener>()
+  const factory OfficeDetailsState.toHistory() = _ToHistory;
 }

@@ -15,7 +15,7 @@ class MainNavCubit extends Cubit<MainNavState> {
   final PageController _pageController = PageController();
   PageController get pageController => _pageController;
 
-  int get tabNumber => MainTabs.values.length;
+  int get tabNumber => MainPages.values.length;
 
   int _index = 0;
   int get index => _index;

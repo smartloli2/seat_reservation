@@ -18,6 +18,14 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
 
   OfficeDetailsCubit() : super(const OfficeDetailsState.loading());
 
+  String get buttonText => state.maybeMap(
+        orElse: () => "Загрузка...",
+        loaded: (_) =>
+            buttonEnabled ? "Подтвердить" : "Укажите место на карте...",
+      );
+
+  bool get buttonEnabled => _selectedPlaceIndex != null;
+
   late final double _officeWidth;
   late final double _officeHeight;
   late final OfficeSize _officeSize;
@@ -66,5 +74,12 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
 
     _selectedPlaceIndex = index;
     return emit(_loadedState);
+  }
+
+  void toHistory() => emit(const OfficeDetailsState.toHistory());
+
+  void bookAgain() {
+    _selectedPlaceIndex = null;
+    emit(_loadedState);
   }
 }

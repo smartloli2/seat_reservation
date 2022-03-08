@@ -7,7 +7,7 @@ extension BookingStatusX on BookingStatus {
   Color get color {
     switch (this) {
       case BookingStatus.free:
-        return CustomColors.free;
+        return CustomColors.blue;
       case BookingStatus.occupied:
         return CustomColors.occupied;
     }

@@ -35,6 +35,10 @@ class _$OfficeDetailsStateTearOff {
       selectedPlaceIndex: selectedPlaceIndex,
     );
   }
+
+  _ToHistory toHistory() {
+    return const _ToHistory();
+  }
 }
 
 /// @nodoc
@@ -52,6 +56,7 @@ mixin _$OfficeDetailsState {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)
         loaded,
+    required TResult Function() toHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$OfficeDetailsState {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +82,7 @@ mixin _$OfficeDetailsState {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,18 +90,21 @@ mixin _$OfficeDetailsState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ToHistory value) toHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +175,7 @@ class _$_Loading with StateForBuilder implements _Loading {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)
         loaded,
+    required TResult Function() toHistory,
   }) {
     return loading();
   }
@@ -180,6 +191,7 @@ class _$_Loading with StateForBuilder implements _Loading {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
   }) {
     return loading?.call();
   }
@@ -195,6 +207,7 @@ class _$_Loading with StateForBuilder implements _Loading {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -208,6 +221,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ToHistory value) toHistory,
   }) {
     return loading(this);
   }
@@ -217,6 +231,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
   }) {
     return loading?.call(this);
   }
@@ -226,6 +241,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -362,6 +378,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)
         loaded,
+    required TResult Function() toHistory,
   }) {
     return loaded(
         officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
@@ -378,6 +395,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
   }) {
     return loaded?.call(
         officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
@@ -394,6 +412,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             List<Workplace?> workplaces,
             int? selectedPlaceIndex)?
         loaded,
+    TResult Function()? toHistory,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -408,6 +427,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ToHistory value) toHistory,
   }) {
     return loaded(this);
   }
@@ -417,6 +437,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
   }) {
     return loaded?.call(this);
   }
@@ -426,6 +447,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -450,4 +472,133 @@ abstract class _Loaded implements OfficeDetailsState, StateForBuilder {
   int? get selectedPlaceIndex;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ToHistoryCopyWith<$Res> {
+  factory _$ToHistoryCopyWith(
+          _ToHistory value, $Res Function(_ToHistory) then) =
+      __$ToHistoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ToHistoryCopyWithImpl<$Res>
+    extends _$OfficeDetailsStateCopyWithImpl<$Res>
+    implements _$ToHistoryCopyWith<$Res> {
+  __$ToHistoryCopyWithImpl(_ToHistory _value, $Res Function(_ToHistory) _then)
+      : super(_value, (v) => _then(v as _ToHistory));
+
+  @override
+  _ToHistory get _value => super._value as _ToHistory;
+}
+
+/// @nodoc
+
+@With<StateForListener>()
+class _$_ToHistory with StateForListener implements _ToHistory {
+  const _$_ToHistory();
+
+  @override
+  String toString() {
+    return 'OfficeDetailsState.toHistory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ToHistory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)
+        loaded,
+    required TResult Function() toHistory,
+  }) {
+    return toHistory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
+        loaded,
+    TResult Function()? toHistory,
+  }) {
+    return toHistory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex)?
+        loaded,
+    TResult Function()? toHistory,
+    required TResult orElse(),
+  }) {
+    if (toHistory != null) {
+      return toHistory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ToHistory value) toHistory,
+  }) {
+    return toHistory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
+  }) {
+    return toHistory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
+    required TResult orElse(),
+  }) {
+    if (toHistory != null) {
+      return toHistory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToHistory implements OfficeDetailsState, StateForListener {
+  const factory _ToHistory() = _$_ToHistory;
 }

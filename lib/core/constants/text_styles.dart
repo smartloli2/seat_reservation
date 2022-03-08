@@ -17,4 +17,11 @@ class TextStyles {
     fontSize: 18,
     color: CustomColors.dark,
   );
+
+  static const alertButtonText = TextStyle(
+    fontFamily: 'GTWalsheimPro',
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+    color: CustomColors.blue,
+  );
 }

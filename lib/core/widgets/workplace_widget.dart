@@ -21,8 +21,6 @@ class WorkplaceWidget extends StatelessWidget {
     final workplace = this.workplace;
     if (workplace == null) return const NullWidget();
 
-    print('build');
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: InkWell(
