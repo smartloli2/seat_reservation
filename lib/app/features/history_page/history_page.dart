@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:seat_reservation/app/features/history_page/logic/history_cubit.dart';
 import 'package:seat_reservation/core/base_state.dart';
 import 'package:seat_reservation/core/constants/custom_colors.dart';
+import 'package:seat_reservation/core/constants/resources.dart';
 import 'package:seat_reservation/core/constants/text_styles.dart';
+import 'package:seat_reservation/core/extensions/date_time_ext.dart';
+import 'package:seat_reservation/core/extensions/int_ext.dart';
 import 'package:seat_reservation/core/widgets/loading_widget.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -37,21 +41,25 @@ class _HistoryPageState
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              const Icon(Icons.wifi_protected_setup_outlined),
+                              SvgPicture.asset(Resources.circle),
+                              const SizedBox(width: 15),
                               Text(
                                 '#${booking.id}',
-                                style: TextStyles.appBarTitle,
+                                style: TextStyles.officeCardTitle,
                               ),
                             ],
                           ),
                           Text(
-                            booking.createdAt.toString(),
+                            booking.createdAt.isToday
+                                ? booking.createdAt.kmm
+                                : booking.createdAt.ddmmyy,
                             style: TextStyles.cardDate,
                           ),
                         ],
@@ -63,9 +71,10 @@ class _HistoryPageState
                       ),
                       const SizedBox(height: 15),
                       Text(
-                        'Место: ${booking.workplaceId}',
+                        'Место: ${booking.workplaceId.toZZZString}',
                         style: TextStyles.cardText,
                       ),
+                      const SizedBox(height: 36),
                     ],
                   ),
                 ),

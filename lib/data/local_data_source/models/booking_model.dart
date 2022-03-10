@@ -9,9 +9,9 @@ class BookingModel {
   @HiveField(0)
   final int id;
   @HiveField(1)
-  final String officeId;
+  final int officeId;
   @HiveField(2)
-  final String workplaceId;
+  final int workplaceId;
   @HiveField(3)
   final String officeName;
   @HiveField(4)

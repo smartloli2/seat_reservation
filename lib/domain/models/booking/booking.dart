@@ -2,8 +2,8 @@ import 'package:seat_reservation/domain/models/office/office.dart';
 
 class Booking {
   final int id;
-  final String officeId;
-  final String workplaceId;
+  final int officeId;
+  final int workplaceId;
   final String officeName;
   final DateTime createdAt;
 

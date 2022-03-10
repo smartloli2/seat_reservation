@@ -18,8 +18,8 @@ class BookingModelAdapter extends TypeAdapter<BookingModel> {
     };
     return BookingModel(
       id: fields[0] as int,
-      officeId: fields[1] as String,
-      workplaceId: fields[2] as String,
+      officeId: fields[1] as int,
+      workplaceId: fields[2] as int,
       officeName: fields[3] as String,
       createdAt: fields[4] as DateTime,
     );

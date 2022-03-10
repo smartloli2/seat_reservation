@@ -39,6 +39,7 @@ dependencies:
   
   # FP style classes
   dartz: ^0.10.0-nullsafety.1
+  intl: ^0.17.0
   
   
   
