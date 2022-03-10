@@ -3,8 +3,6 @@ import 'package:hive/hive.dart';
 import 'i_storage.dart';
 
 class HiveStorage<T> implements IStorage<T> {
-  static const maxKeyLength = 255;
-
   @override
   final String boxName;
 

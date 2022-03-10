@@ -8,6 +8,11 @@ import 'package:seat_reservation/app/features/home_page/widgets/office_details/l
 import 'package:seat_reservation/app/features/main/screen/logic/main_nav_cubit.dart';
 import 'package:seat_reservation/core/custom_cubit_observer.dart';
 import 'package:seat_reservation/data/local_data_source/models/booking_model.dart';
+import 'package:seat_reservation/data/local_data_source/models/office/office_model.dart';
+import 'package:seat_reservation/data/local_data_source/models/office/submodels/booking_status_model.dart';
+import 'package:seat_reservation/data/local_data_source/models/office/submodels/coordinates_model.dart';
+import 'package:seat_reservation/data/local_data_source/models/office/submodels/office_size_model.dart';
+import 'package:seat_reservation/data/local_data_source/models/office/submodels/workplace_model.dart';
 import 'package:seat_reservation/data/local_data_source/storage/storage.dart';
 import 'package:seat_reservation/data/repositories/booking_repository.dart';
 import 'package:seat_reservation/data/repositories/office_repository.dart';
@@ -17,6 +22,7 @@ import 'package:seat_reservation/domain/models/booking/booking.dart';
 import 'package:seat_reservation/domain/usecases/get_bookings_usecase.dart';
 import 'package:seat_reservation/domain/usecases/get_offices_usecase.dart';
 import 'package:seat_reservation/domain/usecases/save_bookings_usecase.dart';
+import 'package:seat_reservation/domain/usecases/save_office_usecase.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -37,23 +43,33 @@ void _registerStorages() {
 
   getIt.registerLazySingleton<IStorage<BookingModel>>(
       () => HiveStorage<BookingModel>(HiveBoxNames.booking));
+
+  getIt.registerLazySingleton<IStorage<OfficeModel>>(
+      () => HiveStorage(HiveBoxNames.office));
 }
 
-void _initHive() {
-  Hive
-    ..initFlutter()
-    ..registerAdapter(BookingModelAdapter());
-}
+void _initHive() => Hive
+  ..initFlutter()
+  ..registerAdapter(BookingModelAdapter())
+  ..registerAdapter(OfficeModelAdapter())
+  ..registerAdapter(BookingStatusModelAdapter())
+  ..registerAdapter(CoordinatesModelAdapter())
+  ..registerAdapter(OfficeSizeModelAdapter())
+  ..registerAdapter(WorkplaceModelAdapter());
 
 void _registerRepositories() {
   getIt.registerFactory<IBookingRepository>(
       () => BookingRepository(getIt.get()));
 
-  getIt.registerFactory<IOfficeRepository>(() => OfficeRepository());
+  getIt.registerFactory<IOfficeRepository>(() => OfficeRepository(
+        getIt.get(),
+      ));
 }
 
 void _registerUseCases() {
   getIt.registerFactory(() => GetOfficesUsecase(officeRepository: getIt.get()));
+  getIt.registerFactory(() => SaveOfficeUsecase(officeRepository: getIt.get()));
+
   getIt.registerFactory(
       () => GetBookingsUsecase(bookingRepository: getIt.get()));
   getIt.registerFactory(
@@ -64,5 +80,8 @@ void _registerCubits() {
   getIt.registerLazySingleton(() => MainNavCubit());
   getIt.registerFactory(() => HomeCubit(getIt.get()));
   getIt.registerFactory(() => HistoryCubit(getIt.get()));
-  getIt.registerFactory(() => OfficeDetailsCubit(getIt.get()));
+  getIt.registerFactory(() => OfficeDetailsCubit(
+        getIt.get(),
+        getIt.get(),
+      ));
 }

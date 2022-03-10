@@ -14,4 +14,9 @@ class Booking {
     required this.officeName,
     required this.createdAt,
   });
+
+  @override
+  String toString() {
+    return 'Booking(id: $id, officeId: $officeId, workplaceId: $workplaceId, officeName: $officeName, createdAt: $createdAt)';
+  }
 }

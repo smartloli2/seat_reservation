@@ -5,10 +5,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:seat_reservation/core/state_mixins.dart';
 import 'package:seat_reservation/domain/models/booking/booking.dart';
 import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
-import 'package:seat_reservation/domain/models/office/entities/size.dart';
+import 'package:seat_reservation/domain/models/office/entities/office_size.dart';
 import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
 import 'package:seat_reservation/domain/models/office/office.dart';
 import 'package:seat_reservation/domain/usecases/save_bookings_usecase.dart';
+import 'package:seat_reservation/domain/usecases/save_office_usecase.dart';
 
 part 'office_details_cubit.freezed.dart';
 part 'office_details_state.dart';
@@ -21,9 +22,11 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
   final seatsInnerPaddings = 16.0;
 
   final SaveBookingUsecase _saveBookingUsecase;
+  final SaveOfficeUsecase _saveOfficeUsecase;
 
   OfficeDetailsCubit(
     this._saveBookingUsecase,
+    this._saveOfficeUsecase,
   ) : super(const OfficeDetailsState.loading());
 
   String get buttonText => state.maybeMap(
@@ -36,13 +39,14 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
 
   bool _isButtonLoading = false;
 
-  late final Office _office;
+  late Office _office;
   late final double _officeWidth;
   late final double _officeHeight;
   OfficeSize get _officeSize => _office.size;
-  late final List<Workplace?> _workplaces;
+  late List<Workplace?> _workplaces;
 
   int? _selectedPlaceIndex;
+  Workplace get _selectedWorkplace => _workplaces[_selectedPlaceIndex!]!;
 
   OfficeDetailsState get _loadedState => OfficeDetailsState.loaded(
         officeWidth: _officeWidth,
@@ -96,17 +100,33 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
   }
 
   Future<void> confirmSelection() async {
+    if (_selectedPlaceIndex == null ||
+        _workplaces[_selectedPlaceIndex!] == null) return;
+
     _isButtonLoading = true;
     emit(_loadedState);
 
     await _saveBookingUsecase(Booking(
       id: Random().nextInt(9999),
       officeId: _office.id,
-      workplaceId: _selectedPlaceIndex!,
+      workplaceId: int.parse(_selectedWorkplace.id),
       officeName: _office.name,
       createdAt: DateTime.now(),
     ));
 
+    final updatedOffice = _office.copyWith(
+        workplaces: _office.workplaces
+            .map((e) => e.id == _selectedWorkplace.id
+                ? e.copyWith(bookingStatus: BookingStatus.occupied)
+                : e)
+            .toList());
+
+    _workplaces[_selectedPlaceIndex!] =
+        _selectedWorkplace.copyWith(bookingStatus: BookingStatus.occupied);
+
+    await _saveOfficeUsecase(updatedOffice);
+
+    _office = updatedOffice;
     _isButtonLoading = false;
     emit(const OfficeDetailsState.showSuccessAlert());
   }

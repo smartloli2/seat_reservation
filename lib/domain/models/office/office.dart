@@ -1,4 +1,4 @@
-import 'package:seat_reservation/domain/models/office/entities/size.dart';
+import 'package:seat_reservation/domain/models/office/entities/office_size.dart';
 import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
 
 class Office {
