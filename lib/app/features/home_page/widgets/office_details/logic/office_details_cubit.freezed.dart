@@ -26,18 +26,24 @@ class _$OfficeDetailsStateTearOff {
       required double officeHeight,
       required OfficeSize officeSize,
       required List<Workplace?> workplaces,
-      required int? selectedPlaceIndex}) {
+      required int? selectedPlaceIndex,
+      required bool isButtonLoading}) {
     return _Loaded(
       officeWidth: officeWidth,
       officeHeight: officeHeight,
       officeSize: officeSize,
       workplaces: workplaces,
       selectedPlaceIndex: selectedPlaceIndex,
+      isButtonLoading: isButtonLoading,
     );
   }
 
   _ToHistory toHistory() {
     return const _ToHistory();
+  }
+
+  _ShowSuccessAlert showSuccessAlert() {
+    return const _ShowSuccessAlert();
   }
 }
 
@@ -54,9 +60,11 @@ mixin _$OfficeDetailsState {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)
+            int? selectedPlaceIndex,
+            bool isButtonLoading)
         loaded,
     required TResult Function() toHistory,
+    required TResult Function() showSuccessAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,9 +75,11 @@ mixin _$OfficeDetailsState {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,9 +90,11 @@ mixin _$OfficeDetailsState {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +103,7 @@ mixin _$OfficeDetailsState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ToHistory value) toHistory,
+    required TResult Function(_ShowSuccessAlert value) showSuccessAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +111,7 @@ mixin _$OfficeDetailsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +119,7 @@ mixin _$OfficeDetailsState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,9 +188,11 @@ class _$_Loading with StateForBuilder implements _Loading {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)
+            int? selectedPlaceIndex,
+            bool isButtonLoading)
         loaded,
     required TResult Function() toHistory,
+    required TResult Function() showSuccessAlert,
   }) {
     return loading();
   }
@@ -189,9 +206,11 @@ class _$_Loading with StateForBuilder implements _Loading {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
   }) {
     return loading?.call();
   }
@@ -205,9 +224,11 @@ class _$_Loading with StateForBuilder implements _Loading {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -222,6 +243,7 @@ class _$_Loading with StateForBuilder implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ToHistory value) toHistory,
+    required TResult Function(_ShowSuccessAlert value) showSuccessAlert,
   }) {
     return loading(this);
   }
@@ -232,6 +254,7 @@ class _$_Loading with StateForBuilder implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
   }) {
     return loading?.call(this);
   }
@@ -242,6 +265,7 @@ class _$_Loading with StateForBuilder implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -264,7 +288,8 @@ abstract class _$LoadedCopyWith<$Res> {
       double officeHeight,
       OfficeSize officeSize,
       List<Workplace?> workplaces,
-      int? selectedPlaceIndex});
+      int? selectedPlaceIndex,
+      bool isButtonLoading});
 }
 
 /// @nodoc
@@ -283,6 +308,7 @@ class __$LoadedCopyWithImpl<$Res> extends _$OfficeDetailsStateCopyWithImpl<$Res>
     Object? officeSize = freezed,
     Object? workplaces = freezed,
     Object? selectedPlaceIndex = freezed,
+    Object? isButtonLoading = freezed,
   }) {
     return _then(_Loaded(
       officeWidth: officeWidth == freezed
@@ -305,6 +331,10 @@ class __$LoadedCopyWithImpl<$Res> extends _$OfficeDetailsStateCopyWithImpl<$Res>
           ? _value.selectedPlaceIndex
           : selectedPlaceIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      isButtonLoading: isButtonLoading == freezed
+          ? _value.isButtonLoading
+          : isButtonLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -318,7 +348,8 @@ class _$_Loaded with StateForBuilder implements _Loaded {
       required this.officeHeight,
       required this.officeSize,
       required this.workplaces,
-      required this.selectedPlaceIndex});
+      required this.selectedPlaceIndex,
+      required this.isButtonLoading});
 
   @override
   final double officeWidth;
@@ -330,10 +361,12 @@ class _$_Loaded with StateForBuilder implements _Loaded {
   final List<Workplace?> workplaces;
   @override
   final int? selectedPlaceIndex;
+  @override
+  final bool isButtonLoading;
 
   @override
   String toString() {
-    return 'OfficeDetailsState.loaded(officeWidth: $officeWidth, officeHeight: $officeHeight, officeSize: $officeSize, workplaces: $workplaces, selectedPlaceIndex: $selectedPlaceIndex)';
+    return 'OfficeDetailsState.loaded(officeWidth: $officeWidth, officeHeight: $officeHeight, officeSize: $officeSize, workplaces: $workplaces, selectedPlaceIndex: $selectedPlaceIndex, isButtonLoading: $isButtonLoading)';
   }
 
   @override
@@ -350,7 +383,9 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other.workplaces, workplaces) &&
             const DeepCollectionEquality()
-                .equals(other.selectedPlaceIndex, selectedPlaceIndex));
+                .equals(other.selectedPlaceIndex, selectedPlaceIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.isButtonLoading, isButtonLoading));
   }
 
   @override
@@ -360,7 +395,8 @@ class _$_Loaded with StateForBuilder implements _Loaded {
       const DeepCollectionEquality().hash(officeHeight),
       const DeepCollectionEquality().hash(officeSize),
       const DeepCollectionEquality().hash(workplaces),
-      const DeepCollectionEquality().hash(selectedPlaceIndex));
+      const DeepCollectionEquality().hash(selectedPlaceIndex),
+      const DeepCollectionEquality().hash(isButtonLoading));
 
   @JsonKey(ignore: true)
   @override
@@ -376,12 +412,14 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)
+            int? selectedPlaceIndex,
+            bool isButtonLoading)
         loaded,
     required TResult Function() toHistory,
+    required TResult Function() showSuccessAlert,
   }) {
-    return loaded(
-        officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
+    return loaded(officeWidth, officeHeight, officeSize, workplaces,
+        selectedPlaceIndex, isButtonLoading);
   }
 
   @override
@@ -393,12 +431,14 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
   }) {
-    return loaded?.call(
-        officeWidth, officeHeight, officeSize, workplaces, selectedPlaceIndex);
+    return loaded?.call(officeWidth, officeHeight, officeSize, workplaces,
+        selectedPlaceIndex, isButtonLoading);
   }
 
   @override
@@ -410,14 +450,16 @@ class _$_Loaded with StateForBuilder implements _Loaded {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (loaded != null) {
       return loaded(officeWidth, officeHeight, officeSize, workplaces,
-          selectedPlaceIndex);
+          selectedPlaceIndex, isButtonLoading);
     }
     return orElse();
   }
@@ -428,6 +470,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ToHistory value) toHistory,
+    required TResult Function(_ShowSuccessAlert value) showSuccessAlert,
   }) {
     return loaded(this);
   }
@@ -438,6 +481,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
   }) {
     return loaded?.call(this);
   }
@@ -448,6 +492,7 @@ class _$_Loaded with StateForBuilder implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -463,13 +508,15 @@ abstract class _Loaded implements OfficeDetailsState, StateForBuilder {
       required double officeHeight,
       required OfficeSize officeSize,
       required List<Workplace?> workplaces,
-      required int? selectedPlaceIndex}) = _$_Loaded;
+      required int? selectedPlaceIndex,
+      required bool isButtonLoading}) = _$_Loaded;
 
   double get officeWidth;
   double get officeHeight;
   OfficeSize get officeSize;
   List<Workplace?> get workplaces;
   int? get selectedPlaceIndex;
+  bool get isButtonLoading;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -521,9 +568,11 @@ class _$_ToHistory with StateForListener implements _ToHistory {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)
+            int? selectedPlaceIndex,
+            bool isButtonLoading)
         loaded,
     required TResult Function() toHistory,
+    required TResult Function() showSuccessAlert,
   }) {
     return toHistory();
   }
@@ -537,9 +586,11 @@ class _$_ToHistory with StateForListener implements _ToHistory {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
   }) {
     return toHistory?.call();
   }
@@ -553,9 +604,11 @@ class _$_ToHistory with StateForListener implements _ToHistory {
             double officeHeight,
             OfficeSize officeSize,
             List<Workplace?> workplaces,
-            int? selectedPlaceIndex)?
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
         loaded,
     TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (toHistory != null) {
@@ -570,6 +623,7 @@ class _$_ToHistory with StateForListener implements _ToHistory {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ToHistory value) toHistory,
+    required TResult Function(_ShowSuccessAlert value) showSuccessAlert,
   }) {
     return toHistory(this);
   }
@@ -580,6 +634,7 @@ class _$_ToHistory with StateForListener implements _ToHistory {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
   }) {
     return toHistory?.call(this);
   }
@@ -590,6 +645,7 @@ class _$_ToHistory with StateForListener implements _ToHistory {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
     required TResult orElse(),
   }) {
     if (toHistory != null) {
@@ -601,4 +657,144 @@ class _$_ToHistory with StateForListener implements _ToHistory {
 
 abstract class _ToHistory implements OfficeDetailsState, StateForListener {
   const factory _ToHistory() = _$_ToHistory;
+}
+
+/// @nodoc
+abstract class _$ShowSuccessAlertCopyWith<$Res> {
+  factory _$ShowSuccessAlertCopyWith(
+          _ShowSuccessAlert value, $Res Function(_ShowSuccessAlert) then) =
+      __$ShowSuccessAlertCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ShowSuccessAlertCopyWithImpl<$Res>
+    extends _$OfficeDetailsStateCopyWithImpl<$Res>
+    implements _$ShowSuccessAlertCopyWith<$Res> {
+  __$ShowSuccessAlertCopyWithImpl(
+      _ShowSuccessAlert _value, $Res Function(_ShowSuccessAlert) _then)
+      : super(_value, (v) => _then(v as _ShowSuccessAlert));
+
+  @override
+  _ShowSuccessAlert get _value => super._value as _ShowSuccessAlert;
+}
+
+/// @nodoc
+
+@With<StateForListener>()
+class _$_ShowSuccessAlert with StateForListener implements _ShowSuccessAlert {
+  const _$_ShowSuccessAlert();
+
+  @override
+  String toString() {
+    return 'OfficeDetailsState.showSuccessAlert()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ShowSuccessAlert);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex,
+            bool isButtonLoading)
+        loaded,
+    required TResult Function() toHistory,
+    required TResult Function() showSuccessAlert,
+  }) {
+    return showSuccessAlert();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
+        loaded,
+    TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
+  }) {
+    return showSuccessAlert?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            double officeWidth,
+            double officeHeight,
+            OfficeSize officeSize,
+            List<Workplace?> workplaces,
+            int? selectedPlaceIndex,
+            bool isButtonLoading)?
+        loaded,
+    TResult Function()? toHistory,
+    TResult Function()? showSuccessAlert,
+    required TResult orElse(),
+  }) {
+    if (showSuccessAlert != null) {
+      return showSuccessAlert();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ToHistory value) toHistory,
+    required TResult Function(_ShowSuccessAlert value) showSuccessAlert,
+  }) {
+    return showSuccessAlert(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
+  }) {
+    return showSuccessAlert?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ToHistory value)? toHistory,
+    TResult Function(_ShowSuccessAlert value)? showSuccessAlert,
+    required TResult orElse(),
+  }) {
+    if (showSuccessAlert != null) {
+      return showSuccessAlert(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowSuccessAlert
+    implements OfficeDetailsState, StateForListener {
+  const factory _ShowSuccessAlert() = _$_ShowSuccessAlert;
 }

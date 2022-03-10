@@ -12,8 +12,12 @@ class OfficeDetailsState with _$OfficeDetailsState {
     required OfficeSize officeSize,
     required List<Workplace?> workplaces,
     required int? selectedPlaceIndex,
+    required bool isButtonLoading,
   }) = _Loaded;
 
   @With<StateForListener>()
   const factory OfficeDetailsState.toHistory() = _ToHistory;
+
+  @With<StateForListener>()
+  const factory OfficeDetailsState.showSuccessAlert() = _ShowSuccessAlert;
 }

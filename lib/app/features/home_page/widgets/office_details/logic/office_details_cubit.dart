@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:seat_reservation/core/state_mixins.dart';
+import 'package:seat_reservation/domain/models/booking/booking.dart';
 import 'package:seat_reservation/domain/models/office/entities/booking_status.dart';
 import 'package:seat_reservation/domain/models/office/entities/size.dart';
 import 'package:seat_reservation/domain/models/office/entities/workplace.dart';
 import 'package:seat_reservation/domain/models/office/office.dart';
+import 'package:seat_reservation/domain/usecases/save_bookings_usecase.dart';
 
 part 'office_details_cubit.freezed.dart';
 part 'office_details_state.dart';
@@ -16,7 +20,11 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
   final seatsOuterPaddings = 16.0;
   final seatsInnerPaddings = 16.0;
 
-  OfficeDetailsCubit() : super(const OfficeDetailsState.loading());
+  final SaveBookingUsecase _saveBookingUsecase;
+
+  OfficeDetailsCubit(
+    this._saveBookingUsecase,
+  ) : super(const OfficeDetailsState.loading());
 
   String get buttonText => state.maybeMap(
         orElse: () => "Загрузка...",
@@ -26,9 +34,12 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
 
   bool get buttonEnabled => _selectedPlaceIndex != null;
 
+  bool _isButtonLoading = false;
+
+  late final Office _office;
   late final double _officeWidth;
   late final double _officeHeight;
-  late final OfficeSize _officeSize;
+  OfficeSize get _officeSize => _office.size;
   late final List<Workplace?> _workplaces;
 
   int? _selectedPlaceIndex;
@@ -39,10 +50,11 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
         officeSize: _officeSize,
         workplaces: List.from(_workplaces),
         selectedPlaceIndex: _selectedPlaceIndex,
+        isButtonLoading: _isButtonLoading,
       );
 
   void init(Office office) {
-    _officeSize = office.size;
+    _office = office;
     _officeWidth = office.size.width * (seatWidth + seatsOuterPaddings) +
         seatsOuterPaddings * 2;
     _officeHeight = office.size.height * (seatHeight + seatsInnerPaddings) +
@@ -81,5 +93,21 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
   void bookAgain() {
     _selectedPlaceIndex = null;
     emit(_loadedState);
+  }
+
+  Future<void> confirmSelection() async {
+    _isButtonLoading = true;
+    emit(_loadedState);
+
+    await _saveBookingUsecase(Booking(
+      id: Random().nextInt(9999),
+      officeId: _office.id.toString(),
+      workplaceId: _selectedPlaceIndex.toString(),
+      officeName: _office.name,
+      createdAt: DateTime.now(),
+    ));
+
+    _isButtonLoading = false;
+    emit(const OfficeDetailsState.showSuccessAlert());
   }
 }

@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:seat_reservation/data/repositories/booking_repository.dart';
+import 'package:seat_reservation/domain/contracts/i_booking_repository.dart';
 import 'package:seat_reservation/domain/models/booking/booking.dart';
 
 class SaveBookingUsecase {
-  final BookingRepository _bookingRepository;
+  final IBookingRepository _bookingRepository;
 
   SaveBookingUsecase({
-    required BookingRepository bookingRepository,
+    required IBookingRepository bookingRepository,
   }) : _bookingRepository = bookingRepository;
 
   Future<Either<String, Unit>> call(Booking booking) => _bookingRepository

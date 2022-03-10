@@ -13,7 +13,7 @@ class BookingModel {
   @HiveField(2)
   final String workplaceId;
   @HiveField(3)
-  final int officeName;
+  final String officeName;
   @HiveField(4)
   final DateTime createdAt;
 

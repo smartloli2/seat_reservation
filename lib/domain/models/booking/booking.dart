@@ -4,7 +4,7 @@ class Booking {
   final int id;
   final String officeId;
   final String workplaceId;
-  final int officeName;
+  final String officeName;
   final DateTime createdAt;
 
   const Booking({

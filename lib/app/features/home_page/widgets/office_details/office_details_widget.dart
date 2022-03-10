@@ -41,6 +41,40 @@ class _OfficeDetailsWidgetState extends BaseState<OfficeDetailsWidget,
   void listener(BuildContext context, OfficeDetailsState state) =>
       state.maybeMap(
         orElse: () {},
+        showSuccessAlert: (state) => showCupertinoDialog(
+          context: context,
+          builder: (context) {
+            return CupertinoAlertDialog(
+              title: const Text(
+                "Бронирование успешно!",
+                style: TextStyles.officeCardTitle,
+              ),
+              actions: [
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.maybePop(context);
+                    cubit.bookAgain();
+                  },
+                  child: const Text(
+                    "Забронировать ещё",
+                    style: TextStyles.alertButtonText,
+                  ),
+                ),
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.maybePop(context);
+                    cubit.toHistory();
+                  },
+                  child: const Text(
+                    "Завершить",
+                    style: TextStyles.alertButtonText,
+                  ),
+                ),
+                const NullWidget(),
+              ],
+            );
+          },
+        ),
         toHistory: (_) =>
             context.read<MainNavCubit>().routeTo(MainPages.history.index),
       );
@@ -103,42 +137,7 @@ class _OfficeDetailsWidgetState extends BaseState<OfficeDetailsWidget,
               child: SizedBox(
                 width: 90.w,
                 child: MaterialButton(
-                  onPressed: () {
-                    showCupertinoDialog(
-                      context: context,
-                      builder: (context) {
-                        return CupertinoAlertDialog(
-                          title: const Text(
-                            "Бронирование успешно!",
-                            style: TextStyles.officeCardTitle,
-                          ),
-                          actions: [
-                            CupertinoDialogAction(
-                              onPressed: () {
-                                Navigator.maybePop(context);
-                                cubit.bookAgain();
-                              },
-                              child: const Text(
-                                "Забронировать ещё",
-                                style: TextStyles.alertButtonText,
-                              ),
-                            ),
-                            CupertinoDialogAction(
-                              onPressed: () {
-                                Navigator.maybePop(context);
-                                cubit.toHistory();
-                              },
-                              child: const Text(
-                                "Завершить",
-                                style: TextStyles.alertButtonText,
-                              ),
-                            ),
-                            const NullWidget(),
-                          ],
-                        );
-                      },
-                    );
-                  },
+                  onPressed: cubit.confirmSelection,
                   color: cubit.buttonEnabled
                       ? CustomColors.dark
                       : CustomColors.dark.withOpacity(0.2),

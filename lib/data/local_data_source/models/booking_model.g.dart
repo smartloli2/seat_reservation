@@ -20,7 +20,7 @@ class BookingModelAdapter extends TypeAdapter<BookingModel> {
       id: fields[0] as int,
       officeId: fields[1] as String,
       workplaceId: fields[2] as String,
-      officeName: fields[3] as int,
+      officeName: fields[3] as String,
       createdAt: fields[4] as DateTime,
     );
   }
