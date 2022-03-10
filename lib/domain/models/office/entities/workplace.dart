@@ -2,7 +2,7 @@ import 'package:seat_reservation/domain/models/office/entities/booking_status.da
 import 'package:seat_reservation/domain/models/office/entities/coordinates.dart';
 
 class Workplace {
-  final String id;
+  final int id;
   final BookingStatus bookingStatus;
   final Coordinates coordinates;
 
@@ -17,7 +17,7 @@ class Workplace {
       'Workplace(id: $id, bookingStatus: $bookingStatus, coordinates: $coordinates)';
 
   Workplace copyWith({
-    String? id,
+    int? id,
     BookingStatus? bookingStatus,
     Coordinates? coordinates,
   }) {

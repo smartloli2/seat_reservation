@@ -10,7 +10,7 @@ part 'workplace_model.g.dart';
 @HiveType(typeId: HiveTypeIds.workplace)
 class WorkplaceModel {
   @HiveField(0)
-  final String id;
+  final int id;
   @HiveField(1)
   final BookingStatusModel bookingStatus;
   @HiveField(2)

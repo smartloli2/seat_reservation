@@ -17,7 +17,7 @@ class WorkplaceModelAdapter extends TypeAdapter<WorkplaceModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WorkplaceModel(
-      id: fields[0] as String,
+      id: fields[0] as int,
       bookingStatus: fields[1] as BookingStatusModel,
       coordinates: fields[2] as CoordinatesModel,
     );

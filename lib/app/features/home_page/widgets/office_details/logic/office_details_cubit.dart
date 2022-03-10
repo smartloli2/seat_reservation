@@ -109,7 +109,7 @@ class OfficeDetailsCubit extends Cubit<OfficeDetailsState> {
     await _saveBookingUsecase(Booking(
       id: Random().nextInt(9999),
       officeId: _office.id,
-      workplaceId: int.parse(_selectedWorkplace.id),
+      workplaceId: _selectedWorkplace.id,
       officeName: _office.name,
       createdAt: DateTime.now(),
     ));

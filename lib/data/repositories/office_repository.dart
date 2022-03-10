@@ -48,27 +48,64 @@ class OfficeRepository implements IOfficeRepository {
       name: "Кузнецкий Мост",
       workplaces: [
         Workplace(
-          id: "001",
+          id: 1,
           bookingStatus: BookingStatus.free,
           coordinates: Coordinates(x: 2, y: 0),
         ),
         Workplace(
-          id: "002",
+          id: 2,
           bookingStatus: BookingStatus.free,
           coordinates: Coordinates(x: 0, y: 1),
         ),
         Workplace(
-          id: "003",
+          id: 3,
           bookingStatus: BookingStatus.free,
           coordinates: Coordinates(x: 2, y: 1),
         ),
         Workplace(
-          id: "004",
+          id: 4,
           bookingStatus: BookingStatus.occupied,
           coordinates: Coordinates(x: 0, y: 2),
         ),
         Workplace(
-          id: "005",
+          id: 5,
+          bookingStatus: BookingStatus.free,
+          coordinates: Coordinates(x: 2, y: 2),
+        ),
+      ],
+      size: OfficeSize(width: 3, height: 3),
+    ),
+    const Office(
+      id: 211,
+      name: "Сибирский Вал",
+      workplaces: [
+        Workplace(
+          id: 1,
+          bookingStatus: BookingStatus.free,
+          coordinates: Coordinates(x: 0, y: 0),
+        ),
+        Workplace(
+          id: 2,
+          bookingStatus: BookingStatus.occupied,
+          coordinates: Coordinates(x: 1, y: 1),
+        ),
+        Workplace(
+          id: 3,
+          bookingStatus: BookingStatus.free,
+          coordinates: Coordinates(x: 1, y: 2),
+        ),
+        Workplace(
+          id: 4,
+          bookingStatus: BookingStatus.free,
+          coordinates: Coordinates(x: 2, y: 1),
+        ),
+        Workplace(
+          id: 5,
+          bookingStatus: BookingStatus.occupied,
+          coordinates: Coordinates(x: 0, y: 2),
+        ),
+        Workplace(
+          id: 6,
           bookingStatus: BookingStatus.free,
           coordinates: Coordinates(x: 2, y: 2),
         ),
