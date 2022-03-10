@@ -20,6 +20,12 @@ class _$HistoryStateTearOff {
   _Loading loading() {
     return const _Loading();
   }
+
+  _Loaded loaded({required List<Booking> bookings}) {
+    return _Loaded(
+      bookings: bookings,
+    );
+  }
 }
 
 /// @nodoc
@@ -30,32 +36,38 @@ mixin _$HistoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<Booking> bookings) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +129,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<Booking> bookings) loaded,
   }) {
     return loading();
   }
@@ -125,6 +138,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
   }) {
     return loading?.call();
   }
@@ -133,6 +147,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -145,6 +160,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return loading(this);
   }
@@ -153,6 +169,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
   }) {
     return loading?.call(this);
   }
@@ -161,6 +178,7 @@ class _$_Loading with StateForBuilder implements _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -172,4 +190,135 @@ class _$_Loading with StateForBuilder implements _Loading {
 
 abstract class _Loading implements HistoryState, StateForBuilder {
   const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$LoadedCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
+      __$LoadedCopyWithImpl<$Res>;
+  $Res call({List<Booking> bookings});
+}
+
+/// @nodoc
+class __$LoadedCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
+      : super(_value, (v) => _then(v as _Loaded));
+
+  @override
+  _Loaded get _value => super._value as _Loaded;
+
+  @override
+  $Res call({
+    Object? bookings = freezed,
+  }) {
+    return _then(_Loaded(
+      bookings: bookings == freezed
+          ? _value.bookings
+          : bookings // ignore: cast_nullable_to_non_nullable
+              as List<Booking>,
+    ));
+  }
+}
+
+/// @nodoc
+
+@With<StateForBuilder>()
+class _$_Loaded with StateForBuilder implements _Loaded {
+  const _$_Loaded({required this.bookings});
+
+  @override
+  final List<Booking> bookings;
+
+  @override
+  String toString() {
+    return 'HistoryState.loaded(bookings: $bookings)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Loaded &&
+            const DeepCollectionEquality().equals(other.bookings, bookings));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(bookings));
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<Booking> bookings) loaded,
+  }) {
+    return loaded(bookings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
+  }) {
+    return loaded?.call(bookings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<Booking> bookings)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(bookings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements HistoryState, StateForBuilder {
+  const factory _Loaded({required List<Booking> bookings}) = _$_Loaded;
+
+  List<Booking> get bookings;
+  @JsonKey(ignore: true)
+  _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

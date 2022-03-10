@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:seat_reservation/core/extensions/dartz_ext.dart';
 import 'package:seat_reservation/core/state_mixins.dart';
 import 'package:seat_reservation/domain/models/office/office.dart';
 import 'package:seat_reservation/domain/usecases/get_offices_usecase.dart';
@@ -27,7 +29,12 @@ class HomeCubit extends Cubit<HomeState> {
         detailsLoaded: (_) => true,
       );
 
-  void loadList() => emit(HomeState.listLoaded(offices: _getOfficesUsecase()));
+  Future<void> loadList() async {
+    final failOrOffices = await _getOfficesUsecase();
+    if (failOrOffices.isRight()) {
+      return emit(HomeState.listLoaded(offices: failOrOffices.asRight));
+    }
+  }
 
   void toDetails(Office office) =>
       emit(HomeState.detailsLoaded(office: office));

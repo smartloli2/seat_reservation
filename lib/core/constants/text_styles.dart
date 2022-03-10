@@ -11,6 +11,13 @@ class TextStyles {
     color: Colors.white,
   );
 
+  static const cardText = TextStyle(
+    fontFamily: 'GTWalsheimPro',
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+    color: CustomColors.dark,
+  );
+
   static const officeCardTitle = TextStyle(
     fontFamily: 'GTWalsheimPro',
     fontWeight: FontWeight.w700,
@@ -23,5 +30,12 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     fontSize: 18,
     color: CustomColors.blue,
+  );
+
+  static const cardDate = TextStyle(
+    fontFamily: 'GTWalsheimPro',
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+    color: CustomColors.mediumGray,
   );
 }

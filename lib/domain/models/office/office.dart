@@ -20,13 +20,13 @@ class Office {
   }
 
   Office copyWith({
-    int? number,
+    int? id,
     String? name,
     List<Workplace>? workplaces,
     OfficeSize? size,
   }) {
     return Office(
-      id: number ?? this.id,
+      id: id ?? this.id,
       name: name ?? this.name,
       workplaces: workplaces ?? this.workplaces,
       size: size ?? this.size,

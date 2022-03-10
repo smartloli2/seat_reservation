@@ -7,4 +7,5 @@ class CustomColors {
   static const blue = Color(0xff3e3eba);
   static const occupied = Color(0xffaeafb7);
   static const selected = Color(0xff17916b);
+  static const mediumGray = Color(0xffaeafb7);
 }

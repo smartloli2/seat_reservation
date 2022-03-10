@@ -9,8 +9,13 @@ import 'package:seat_reservation/core/custom_cubit_observer.dart';
 import 'package:seat_reservation/data/local_data_source/models/booking_model.dart';
 import 'package:seat_reservation/data/local_data_source/storage/storage.dart';
 import 'package:seat_reservation/data/repositories/booking_repository.dart';
+import 'package:seat_reservation/data/repositories/office_repository.dart';
+import 'package:seat_reservation/domain/contracts/I_office_repository.dart';
+import 'package:seat_reservation/domain/contracts/i_booking_repository.dart';
 import 'package:seat_reservation/domain/models/booking/booking.dart';
+import 'package:seat_reservation/domain/usecases/get_bookings_usecase.dart';
 import 'package:seat_reservation/domain/usecases/get_offices_usecase.dart';
+import 'package:seat_reservation/domain/usecases/save_bookings_usecase.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -38,16 +43,23 @@ void _registerAdapters() {
 }
 
 void _registerRepositories() {
-  getIt.registerFactory(() => BookingRepository(getIt.get()));
+  getIt.registerFactory<IBookingRepository>(
+      () => BookingRepository(getIt.get()));
+
+  getIt.registerFactory<IOfficeRepository>(() => OfficeRepository());
 }
 
 void _registerUseCases() {
-  getIt.registerFactory(() => GetOfficesUsecase());
+  getIt.registerFactory(() => GetOfficesUsecase(officeRepository: getIt.get()));
+  getIt.registerFactory(
+      () => GetBookingsUsecase(bookingRepository: getIt.get()));
+  getIt.registerFactory(
+      () => SaveBookingUsecase(bookingRepository: getIt.get()));
 }
 
 void _registerCubits() {
   getIt.registerLazySingleton(() => MainNavCubit());
   getIt.registerFactory(() => HomeCubit(getIt.get()));
-  getIt.registerFactory(() => HistoryCubit());
+  getIt.registerFactory(() => HistoryCubit(getIt.get()));
   getIt.registerFactory(() => OfficeDetailsCubit());
 }

@@ -27,6 +27,52 @@ class _HistoryPageState
       ),
       body: state.maybeMap(
         orElse: () => const LoadingWidget(),
+        loaded: (state) => ListView.builder(
+          itemCount: state.bookings.length,
+          itemBuilder: (context, index) {
+            final booking = state.bookings[index];
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.wifi_protected_setup_outlined),
+                              Text(
+                                '#${booking.id}',
+                                style: TextStyles.appBarTitle,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            booking.createdAt.toString(),
+                            style: TextStyles.cardDate,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        '${booking.officeName} #${booking.officeId}',
+                        style: TextStyles.cardText,
+                      ),
+                      const SizedBox(height: 15),
+                      Text(
+                        'Место: ${booking.workplaceId}',
+                        style: TextStyles.cardText,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
